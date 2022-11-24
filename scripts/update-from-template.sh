@@ -21,10 +21,10 @@ git checkout --orphan our_template $COMMIT_LATEST_TAG
 git add *
 git commit -m "Updated with the template version $LATEST_TAG_FLASK_APP_TEMPLATE"
 
-# Force a merge w/ the 'dev' branch
-git checkout dev
+# Force a merge w/ the 'master' branch
+git checkout master
 git merge our_template --allow-unrelated-histories -X theirs
 
-# Remove orphan branch & push 'dev' branch
+# Remove orphan branch & push 'master' branch
 git branch -D our_template
-git push origin dev
+git push origin master
