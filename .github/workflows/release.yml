@@ -15,7 +15,7 @@ jobs:
       - name: Update version property
         uses: Reedyuk/write-properties@v1.0.3
         with:
-          path: 'gradle.properties'
+          path: 'library/gradle.properties'
           property: 'MODULE_VERSION_NUMBER'
           value: ${{ github.ref_name }}
       - name: Setup cocoapods
@@ -44,7 +44,7 @@ jobs:
           view_top: 1
       - uses: vimtor/action-zip@v1
         with:
-          files: build/XCFrameworks/release/
+          files: library/build/XCFrameworks/release/
           dest: build/${{ github.ref_name }}.zip
       - name: upload iOS artifact to release
         uses: actions/upload-release-asset@v1

@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
 val MODULE_PACKAGE_NAME: String by project
 val MODULE_NAME: String by project
 val MODULE_VERSION_NUMBER: String by project
+val PUBLISH_NAME: String by project
 
 group = MODULE_PACKAGE_NAME
 version = MODULE_VERSION_NUMBER
@@ -108,7 +109,6 @@ val javadocJar by tasks.creating(Jar::class) {
 
 publishing {
     val OPEN_SOURCE_REPO: String by project
-    val PUBLISH_NAME: String by project
     val PUBLISH_DESCRIPTION: String by project
     val PUBLISH_URL: String by project
     val POM_DEVELOPER_ID: String by project
