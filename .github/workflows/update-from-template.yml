@@ -1,0 +1,15 @@
+name: Update-From-Template
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Update Script
+        run: ./scripts/update-from-template.sh
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ github.token }}

@@ -1,0 +1,57 @@
+name: Release
+
+on:
+  release:
+    types: [released]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Update version property
+        uses: Reedyuk/write-properties@v1.0.3
+        with:
+          path: 'library/gradle.properties'
+          property: 'MODULE_VERSION_NUMBER'
+          value: ${{ github.ref_name }}
+      - name: Setup cocoapods
+        run: gem install cocoapods-generate
+      - name: Static Analysis
+        run: ./gradlew detekt
+      - name: Verify Tests Coverage
+        run: ./gradlew koverVerify
+      - name: Build
+        run: ./gradlew build
+      - name: Run create xcframework
+        run: ./gradlew assembleLibraryXCFramework
+      - name: Run publish
+        run: ./gradlew publish
+        env:
+          sonatypeUsernameEnv: ${{ secrets.SONATYPEUSERNAME }}
+          sonatypePasswordEnv: ${{ secrets.SONATYPEPASSWORD }}
+          ORG_GRADLE_PROJECT_signingKey: ${{ secrets.GPG_KEY }}
+          ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.GPG_KEY_PASS }}
+      - name: Get last release
+        id: lastRelease
+        uses: InsonusK/get-latest-release@v1.0.1
+        with:
+          myToken: ${{ github.token }}
+          exclude_types: draft|prerelease
+          view_top: 1
+      - uses: vimtor/action-zip@v1
+        with:
+          files: library/build/XCFrameworks/release/
+          dest: build/${{ github.ref_name }}.zip
+      - name: upload iOS artifact to release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: https://uploads.github.com/repos/MyUNiDAYS/libraryname/releases/${{ steps.lastRelease.outputs.id }}/assets?name=${{ github.ref_name }}.zip
+          asset_path: build/${{ github.ref_name }}.zip
+          asset_name: ${{ github.ref_name }}.zip
+          asset_content_type: application/zip
