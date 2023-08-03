@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.mpp.apple.XCFramework
-
 val MODULE_PACKAGE_NAME: String by project
 val MODULE_NAME: String by project
 val MODULE_VERSION_NUMBER: String by project
@@ -11,6 +9,7 @@ version = MODULE_VERSION_NUMBER
 plugins {
     kotlin("multiplatform")
     id("com.android.library")
+    kotlin("native.cocoapods")
     id("org.jlleitschuh.gradle.ktlint")
     id("io.gitlab.arturbosch.detekt")
     signing
@@ -41,24 +40,21 @@ tasks.withType<io.gitlab.arturbosch.detekt.Detekt>().configureEach {
 }
 
 kotlin {
-    js(BOTH) {
-        browser { }
-    }
     android {
         publishAllLibraryVariants()
         publishLibraryVariantsGroupedByFlavor = true
     }
-    val xcf = XCFramework(MODULE_NAME)
-    ios {
-        binaries.framework {
+    ios()
+    iosSimulatorArm64()
+    cocoapods {
+        ios.deploymentTarget = "11.0"
+        noPodspec()
+        framework {
             baseName = MODULE_NAME
-            xcf.add(this)
+            isStatic = true
         }
-    }
-    iosSimulatorArm64 {
-        binaries.framework {
-            baseName = MODULE_NAME
-            xcf.add(this)
+        pod("CouchbaseLite") {
+            version = "3.1.1"
         }
     }
     sourceSets {
@@ -68,9 +64,11 @@ kotlin {
                 implementation(kotlin("test"))
             }
         }
-        val jsMain by getting
-        val jsTest by getting
-        val androidMain by getting
+        val androidMain by getting {
+            dependencies {
+                implementation("com.couchbase.lite:couchbase-lite-android-ktx:3.1.1")
+            }
+        }
         val androidTest by getting {
             dependencies {
                 implementation("junit:junit:4.13.2")
