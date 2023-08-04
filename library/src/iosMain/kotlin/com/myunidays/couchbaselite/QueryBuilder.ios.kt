@@ -14,4 +14,10 @@ actual object QueryBuilder {
         database: Database
     ): Query = TODO()
         //cocoapods.CouchbaseLite.CBLQueryBuilder().
+    actual fun select(collection: Collection): Query = Query(
+        cocoapods.CouchbaseLite.CBLQueryBuilder.select(
+            select = listOf(cocoapods.CouchbaseLite.CBLQuerySelectResult.all()),
+            from = cocoapods.CouchbaseLite.CBLQueryDataSource.collection(collection.ios)
+        )
+    )
 }

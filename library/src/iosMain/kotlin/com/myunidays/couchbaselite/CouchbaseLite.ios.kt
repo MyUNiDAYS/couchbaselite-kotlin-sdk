@@ -1,9 +1,9 @@
 package com.myunidays.couchbaselite
 
-import cocoapods.CouchbaseLite.CBLDatabase
 
 actual object CouchbaseLite {
-    actual fun init(context: Any?) {
-//        CBLDatabase.initWithName("mydb")
+    actual fun init(context: Any?) {    // change to pass in log level here.
+        val log = cocoapods.CouchbaseLite.CBLDatabase.log()
+        log.console.setLevel(cocoapods.CouchbaseLite.CBLLogLevel.kCBLLogLevelVerbose)
     }
 }

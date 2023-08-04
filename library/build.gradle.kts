@@ -74,7 +74,11 @@ kotlin {
                 implementation("junit:junit:4.13.2")
             }
         }
-        val iosMain by getting
+        val iosMain by getting {
+            dependencies {
+                implementation("com.rickclephas.kmp:nserror-kt:0.1.0")
+            }
+        }
         val iosSimulatorArm64Main by getting
         iosSimulatorArm64Main.dependsOn(iosMain)
         val iosTest by getting

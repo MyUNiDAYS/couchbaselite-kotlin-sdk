@@ -15,4 +15,10 @@ actual object QueryBuilder {
         query: String,
         database: Database
     ): Query = Query(com.couchbase.lite.QueryBuilder.createQuery(query, database.android))
+
+    actual fun select(collection: Collection): Query = Query(
+        com.couchbase.lite.QueryBuilder
+            .select(SelectResult.all())
+            .from(DataSource.collection(collection.android))
+    )
 }
