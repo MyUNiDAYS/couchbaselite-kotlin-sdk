@@ -1,9 +1,5 @@
 package com.myunidays.couchbaselite
 
-import kotlinx.cinterop.*
-import platform.Foundation.NSError
-
-
 actual class Database actual constructor(name: String, configuration: DatabaseConfiguration) {
     lateinit var ios : cocoapods.CouchbaseLite.CBLDatabase
     actual val name: String get() = ios.name
@@ -17,6 +13,15 @@ actual class Database actual constructor(name: String, configuration: DatabaseCo
     actual fun createCollection(name: String): Collection? =
         ios.createCollectionWithName(name, null, null)?.let { Collection(it) }
 
-    actual fun getCollection(name: String): Collection? =
-        ios.collectionWithName(name, null, null)?.let { Collection(it) }
+    actual fun getCollection(
+        collectionName: String,
+        scopeName: String?
+    ): Collection? = ios.collectionWithName(collectionName, scopeName, null)?.let { Collection(it) }
+
+    actual fun createQuery(query: String): Query? =
+        ios.createQuery(query, null)?.let { Query(it) }
+
+    actual fun delete() {
+        ios.delete(null)
+    }
 }

@@ -1,5 +1,13 @@
 package com.myunidays.couchbaselite
 
-expect class SelectResult {
-//    fun from(alias: String)
+expect open class SelectResult {
+    companion object {
+        fun all(): From
+    }
+
+    class From: SelectResult {
+    }
+    class As: SelectResult {
+
+    }
 }

@@ -6,7 +6,15 @@ actual class Database actual constructor(name: String, configuration: DatabaseCo
     actual val path: String? get() = android.path
     actual fun createCollection(name: String): Collection? =
         Collection(android.createCollection(name))
+    actual fun getCollection(
+        collectionName: String,
+        scopeName: String?
+    ): Collection? = android.getCollection(collectionName, scopeName)?.let { Collection(it) }
 
-    actual fun getCollection(name: String): Collection? =
-        android.getCollection(name)?.let { Collection(it) }
+    actual fun createQuery(query: String): Query? =
+        Query(android.createQuery(query))
+
+    actual fun delete() {
+        android.delete()
+    }
 }
