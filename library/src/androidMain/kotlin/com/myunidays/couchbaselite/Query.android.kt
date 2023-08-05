@@ -5,4 +5,7 @@ actual class Query internal constructor(private val android: com.couchbase.lite.
         get() = android.parameters
     actual fun execute(): ResultSet? = ResultSet(android.execute())
     actual fun explain(): String? = android.explain()
+    actual fun addChangeListener(listener: QueryChangeListener) {
+        android.addChangeListener(listener.android)
+    }
 }
