@@ -13,11 +13,14 @@ actual object QueryBuilder {
         query: String,
         database: Database
     ): Query = TODO()
-        //cocoapods.CouchbaseLite.CBLQueryBuilder().
     actual fun select(collection: Collection): Query = Query(
         cocoapods.CouchbaseLite.CBLQueryBuilder.select(
             select = listOf(cocoapods.CouchbaseLite.CBLQuerySelectResult.all()),
             from = cocoapods.CouchbaseLite.CBLQueryDataSource.collection(collection.ios)
         )
+    )
+    actual fun selectDistinct(selectResult: SelectResult, dataSource: DataSource): Query = Query (
+        cocoapods.CouchbaseLite.CBLQueryBuilder
+            .selectDistinct(listOf(selectResult.ios), dataSource)
     )
 }

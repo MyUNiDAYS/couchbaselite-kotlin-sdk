@@ -1,4 +1,9 @@
 package com.myunidays.couchbaselite
 
-expect class Document {
+expect open class Document {
+    val id : String
+    val collection: Collection?
+    val revisionID : String?
+    val sequence : Long
+    fun toMutable(): MutableDocument
 }

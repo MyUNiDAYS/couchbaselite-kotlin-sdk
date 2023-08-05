@@ -1,4 +1,14 @@
 package com.myunidays.couchbaselite
 
-actual class Document internal constructor(ios: cocoapods.CouchbaseLite.CBLDocument) {
+actual open class Document internal constructor(open val ios: cocoapods.CouchbaseLite.CBLDocument) {
+    actual val id: String
+        get() = ios.id
+    actual val collection: Collection?
+        get() = ios.collection?.let { Collection(it) }
+    actual val revisionID: String?
+        get() = ios.revisionID
+    actual val sequence: Long
+        get() = ios.sequence.toLong()
+    actual fun toMutable(): MutableDocument =
+        MutableDocument(ios.toMutable())
 }

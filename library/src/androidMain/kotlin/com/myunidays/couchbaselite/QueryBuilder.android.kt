@@ -21,4 +21,9 @@ actual object QueryBuilder {
             .select(SelectResult.all())
             .from(DataSource.collection(collection.android))
     )
+    actual fun selectDistinct(selectResult: com.myunidays.couchbaselite.SelectResult, dataSource: DataSource) = Query(
+        com.couchbase.lite.QueryBuilder
+            .selectDistinct(selectResult.android)
+            .from(dataSource)
+    )
 }
