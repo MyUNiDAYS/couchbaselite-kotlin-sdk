@@ -4,5 +4,4 @@ expect object QueryBuilder {
     fun select(database: Database) : Query
     fun select(collection: Collection) : Query
     fun selectDistinct(selectResult: SelectResult, dataSource: DataSource) : Query
-    fun createQuery(query: String, database: Database) : Query
 }

@@ -11,7 +11,7 @@ actual object QueryBuilder {
             .from(DataSource.database(database.android))
     )
 
-    actual fun createQuery(
+    fun createQuery(
         query: String,
         database: Database
     ): Query = Query(com.couchbase.lite.QueryBuilder.createQuery(query, database.android))

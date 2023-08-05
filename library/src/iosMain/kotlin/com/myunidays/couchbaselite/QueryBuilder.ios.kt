@@ -8,11 +8,6 @@ actual object QueryBuilder {
                 from = cocoapods.CouchbaseLite.CBLQueryDataSource.database(database.ios)
             )
         )
-
-    actual fun createQuery(
-        query: String,
-        database: Database
-    ): Query = TODO()
     actual fun select(collection: Collection): Query = Query(
         cocoapods.CouchbaseLite.CBLQueryBuilder.select(
             select = listOf(cocoapods.CouchbaseLite.CBLQuerySelectResult.all()),
