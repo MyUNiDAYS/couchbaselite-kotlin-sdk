@@ -1,5 +1,5 @@
 package com.myunidays.couchbaselite
 
-expect class DatabaseConfiguration() {
+expect class DatabaseConfiguration {
     var directory: String
 }
