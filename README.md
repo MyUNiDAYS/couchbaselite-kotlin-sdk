@@ -15,6 +15,14 @@ implementation("com.myunidays:couchbaselite:0.0.1")
 
 ### KMM
 
+The api is based on the android sdk, I would recommend you use https://docs.couchbase.com/couchbase-lite/current/android/quickstart.html as the main point of reference.
+
+```kotlin
+CouchbaseLite.init(context) //initialise for android use Context for ios use null or NSBundle
+val database = Database(dbName)
+val collection = database!!.createCollection(collName)
+```
+
 ## Contributing
 
 This project is set up as an open source project. As such, if there are any suggestions that you have for features, for improving the code itself, or you have come across any problems; you can raise them and/or suggest changes in implementation.
