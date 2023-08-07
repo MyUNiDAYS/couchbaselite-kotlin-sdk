@@ -8,4 +8,5 @@ actual class ResultSet internal constructor(
         ios.allResults()
             ?.map { Result(it as cocoapods.CouchbaseLite.CBLQueryResult) }
             ?: emptyList()
+    actual fun next(): Result? = (ios.nextObject() as? cocoapods.CouchbaseLite.CBLQueryResult)?.let { Result(it) }
 }

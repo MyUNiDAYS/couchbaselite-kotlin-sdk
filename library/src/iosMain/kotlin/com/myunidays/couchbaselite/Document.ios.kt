@@ -9,6 +9,8 @@ actual open class Document internal constructor(open val ios: cocoapods.Couchbas
         get() = ios.revisionID
     actual val sequence: Long
         get() = ios.sequence.toLong()
+    actual val keys: List<String>
+        get() = ios.keys.map { it as String }
     actual fun toMutable(): MutableDocument =
         MutableDocument(ios.toMutable())
 }

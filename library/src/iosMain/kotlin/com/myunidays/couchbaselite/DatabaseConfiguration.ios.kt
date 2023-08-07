@@ -5,4 +5,8 @@ actual class DatabaseConfiguration internal constructor(val ios: cocoapods.Couch
     actual var directory: String
         get() = ios.directory
         set(value) { ios.setDirectory(value) }
+
+    actual companion object {
+        actual fun default(): DatabaseConfiguration = DatabaseConfiguration(cocoapods.CouchbaseLite.CBLDatabaseConfiguration())
+    }
 }

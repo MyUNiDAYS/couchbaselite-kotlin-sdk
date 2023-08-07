@@ -5,5 +5,6 @@ expect open class Document {
     val collection: Collection?
     val revisionID : String?
     val sequence : Long
+    val keys: List<String>
     fun toMutable(): MutableDocument
 }

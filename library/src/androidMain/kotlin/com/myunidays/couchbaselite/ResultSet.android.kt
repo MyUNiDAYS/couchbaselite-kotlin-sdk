@@ -5,4 +5,5 @@ actual class ResultSet internal constructor(
 ){
     actual fun allResults(): List<Result> =
         android.allResults().map { Result(it) }
+    actual fun next(): Result? = android.next()?.let { Result(it) }
 }

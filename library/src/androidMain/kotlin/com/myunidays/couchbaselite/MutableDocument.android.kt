@@ -21,6 +21,6 @@ actual class MutableDocument internal constructor(override val android: com.couc
     }
     actual companion object {
         actual fun setJSON(json: String): MutableDocument =
-            MutableDocument(com.couchbase.lite.MutableDocument(json))
+            MutableDocument(com.couchbase.lite.MutableDocument(null, json))
     }
 }

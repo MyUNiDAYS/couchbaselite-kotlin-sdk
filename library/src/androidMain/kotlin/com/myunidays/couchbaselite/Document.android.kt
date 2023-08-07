@@ -9,6 +9,8 @@ actual open class Document internal constructor(open val android: com.couchbase.
         get() = android.revisionID
     actual val sequence: Long
         get() = android.sequence
+    actual val keys: List<String>
+        get() = android.keys
     actual fun toMutable(): MutableDocument =
         MutableDocument(android.toMutable())
 }

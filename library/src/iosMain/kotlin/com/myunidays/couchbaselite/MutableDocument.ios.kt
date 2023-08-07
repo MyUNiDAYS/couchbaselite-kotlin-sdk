@@ -21,7 +21,10 @@ actual class MutableDocument internal constructor(override val ios: cocoapods.Co
         ios.setString(value, key)
     }
     actual companion object {
-        actual fun setJSON(json: String): MutableDocument =
-            MutableDocument(cocoapods.CouchbaseLite.CBLMutableDocument(json))
+        actual fun setJSON(json: String): MutableDocument {
+            val doc = cocoapods.CouchbaseLite.CBLMutableDocument()
+            doc.setJSON(json, null)
+            return MutableDocument(doc)
+        }
     }
 }

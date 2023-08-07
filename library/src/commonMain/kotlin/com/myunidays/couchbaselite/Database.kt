@@ -1,6 +1,6 @@
 package com.myunidays.couchbaselite
 
-expect class Database(name: String, configuration: DatabaseConfiguration) {
+expect class Database(name: String, configuration: DatabaseConfiguration = DatabaseConfiguration.default()) {
     val name: String
     val path: String?
     val collections: Set<Collection>
