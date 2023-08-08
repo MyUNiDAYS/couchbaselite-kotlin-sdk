@@ -1,6 +1,5 @@
 package com.myunidays.couchbaselite
 
-
 actual class ResultSet internal constructor(
     private val ios: cocoapods.CouchbaseLite.CBLQueryResultSet
 ) {

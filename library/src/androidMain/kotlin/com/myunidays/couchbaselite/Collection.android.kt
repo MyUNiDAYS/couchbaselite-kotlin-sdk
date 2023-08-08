@@ -2,10 +2,8 @@ package com.myunidays.couchbaselite
 
 import com.couchbase.lite.collectionChangeFlow
 import com.couchbase.lite.documentChangeFlow
-import kotlinx.coroutines.flow.callbackFlow
-import java.util.concurrent.Executor
 
-actual class Collection internal constructor(val android: com.couchbase.lite.Collection){
+actual class Collection internal constructor(val android: com.couchbase.lite.Collection) {
     actual val name: String get() = android.name
     actual val count: Long get() = android.count
     actual val scope: Scope
@@ -32,7 +30,7 @@ actual class Collection internal constructor(val android: com.couchbase.lite.Col
     actual fun addDocumentChangeListener(
         id: String,
         listener: DocumentChangeListener
-    ) : ListenerToken = ListenerToken(android.addDocumentChangeListener(id, listener.android))
+    ): ListenerToken = ListenerToken(android.addDocumentChangeListener(id, listener.android))
 
     fun collectionChangeFlow() = android.collectionChangeFlow()
     actual fun documentChangeFlow(documentId: String) = android.documentChangeFlow(documentId)

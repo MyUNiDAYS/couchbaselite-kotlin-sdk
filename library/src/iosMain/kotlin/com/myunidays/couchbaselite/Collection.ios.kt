@@ -3,7 +3,6 @@ package com.myunidays.couchbaselite
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
-import kotlin.collections.Collection
 
 actual class Collection internal constructor(val ios: cocoapods.CouchbaseLite.CBLCollection) {
     actual val name: String get() = ios.name
@@ -35,13 +34,16 @@ actual class Collection internal constructor(val ios: cocoapods.CouchbaseLite.CB
     actual fun addDocumentChangeListener(
         id: String,
         listener: DocumentChangeListener
-    ) : ListenerToken =
+    ): ListenerToken =
         ListenerToken(ios.addDocumentChangeListenerWithID(id, listener.ios))
 
     actual fun documentChangeFlow(documentId: String): Flow<DocumentChange> = callbackFlow {
-        val token = addDocumentChangeListener(documentId, DocumentChangeListener { change ->
-            change?.let { trySend(it) }
-        })
+        val token = addDocumentChangeListener(
+            documentId,
+            DocumentChangeListener { change ->
+                change?.let { trySend(it) }
+            }
+        )
         awaitClose { token.ios.remove() }
     }
 }

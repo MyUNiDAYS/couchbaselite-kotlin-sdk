@@ -4,7 +4,7 @@ import cocoapods.CouchbaseLite.CBLCollection
 import cocoapods.CouchbaseLite.CBLScope
 
 actual class Database actual constructor(name: String, configuration: DatabaseConfiguration) {
-    lateinit var ios : cocoapods.CouchbaseLite.CBLDatabase
+    lateinit var ios: cocoapods.CouchbaseLite.CBLDatabase
     actual val name: String get() = ios.name
     actual val path: String? get() = ios.path
 

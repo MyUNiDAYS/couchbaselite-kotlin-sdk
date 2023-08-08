@@ -14,7 +14,7 @@ actual object QueryBuilder {
             from = cocoapods.CouchbaseLite.CBLQueryDataSource.collection(collection.ios)
         )
     )
-    actual fun selectDistinct(selectResult: SelectResult, dataSource: DataSource): Query = Query (
+    actual fun selectDistinct(selectResult: SelectResult, dataSource: DataSource): Query = Query(
         cocoapods.CouchbaseLite.CBLQueryBuilder
             .selectDistinct(listOf(selectResult.ios), dataSource)
     )

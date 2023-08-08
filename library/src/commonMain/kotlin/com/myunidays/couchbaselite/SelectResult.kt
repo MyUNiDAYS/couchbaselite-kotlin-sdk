@@ -5,9 +5,6 @@ expect open class SelectResult {
         fun all(): From
     }
 
-    class From: SelectResult {
-    }
-    class As: SelectResult {
-
-    }
+    class From : SelectResult
+    class As : SelectResult
 }

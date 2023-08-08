@@ -5,7 +5,7 @@ import com.couchbase.lite.SelectResult
 
 actual object QueryBuilder {
 
-    actual fun select(database: Database) : Query = Query(
+    actual fun select(database: Database): Query = Query(
         com.couchbase.lite.QueryBuilder
             .select(SelectResult.all())
             .from(DataSource.database(database.android))
