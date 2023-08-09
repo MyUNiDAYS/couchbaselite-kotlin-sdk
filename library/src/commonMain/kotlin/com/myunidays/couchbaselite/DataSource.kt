@@ -1,3 +1,9 @@
 package com.myunidays.couchbaselite
 
-expect class DataSource
+@Suppress("UtilityClassWithPublicConstructor")
+expect class DataSource {
+    companion object {
+        fun database(database: Database): DataSource
+        fun collection(collection: Collection): DataSource
+    }
+}

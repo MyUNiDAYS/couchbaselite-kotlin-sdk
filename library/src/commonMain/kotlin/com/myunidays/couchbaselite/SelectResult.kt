@@ -1,10 +1,10 @@
 package com.myunidays.couchbaselite
 
+@Suppress("UtilityClassWithPublicConstructor")
 expect open class SelectResult {
     companion object {
-        fun all(): From
+        fun all(): SelectResult
+        fun expression(expression: Expression): SelectResult
+        fun property(property: String): SelectResult
     }
-
-    class From : SelectResult
-    class As : SelectResult
 }

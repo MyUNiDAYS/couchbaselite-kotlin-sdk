@@ -20,7 +20,7 @@ The api is based on the android sdk, I would recommend you use https://docs.couc
 ```kotlin
 CouchbaseLite.init(context) //initialise for android use Context for ios use null or NSBundle
 val database = Database(dbName)
-val collection = database!!.createCollection(collName)
+val collection = database.createCollection(collName)
 ```
 
 ## Contributing
