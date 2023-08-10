@@ -16,4 +16,5 @@ expect class Collection {
     fun deleteIndex(name: String)
     fun addDocumentChangeListener(id: String, listener: DocumentChangeListener): ListenerToken
     fun documentChangeFlow(documentId: String): Flow<DocumentChange>
+    fun getDocument(id: String): Document?
 }

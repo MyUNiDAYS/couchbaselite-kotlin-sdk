@@ -46,4 +46,6 @@ actual class Collection internal constructor(val ios: cocoapods.CouchbaseLite.CB
         )
         awaitClose { token.ios.remove() }
     }
+
+    actual fun getDocument(id: String): Document? = ios.documentWithID(id, null)?.let { Document(it) }
 }

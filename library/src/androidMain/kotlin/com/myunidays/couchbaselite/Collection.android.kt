@@ -34,4 +34,5 @@ actual class Collection internal constructor(val android: com.couchbase.lite.Col
 
     fun collectionChangeFlow() = android.collectionChangeFlow()
     actual fun documentChangeFlow(documentId: String) = android.documentChangeFlow(documentId)
+    actual fun getDocument(id: String): Document? = android.getDocument(id)?.let { Document(it) }
 }

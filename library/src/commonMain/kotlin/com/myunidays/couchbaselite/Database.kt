@@ -8,7 +8,7 @@ expect class Database(name: String, configuration: DatabaseConfiguration = Datab
     val scopes: Set<Scope>
     val defaultCollection: Collection?
     val defaultScope: Scope?
-    fun deleteCollection(collectionName: String, scope: String?)
+    fun deleteCollection(collectionName: String, scope: String? = null)
     fun createCollection(name: String): Collection?
     fun createQuery(query: String): Query?
     fun delete()

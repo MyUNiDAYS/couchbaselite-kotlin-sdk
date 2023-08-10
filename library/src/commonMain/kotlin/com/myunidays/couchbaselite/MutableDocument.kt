@@ -9,6 +9,6 @@ expect class MutableDocument : Document {
     fun setString(key: String, value: String)
 
     companion object {
-        fun setJSON(json: String): MutableDocument
+        fun setJSON(id: String? = null, json: String): MutableDocument
     }
 }
