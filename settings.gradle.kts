@@ -38,7 +38,7 @@ dependencyResolutionManagement {
         // Android is a reserved keyword
         create("androidVersions") {
             version("compileSdk", "34")
-            version("buildToolsVersion", "30.0.3")
+            version("buildToolsVersion", "33.0.1")
             version("minSdk", "28")
             version("targetSdk", "34")
         }

@@ -12,33 +12,9 @@ The Template Kotlin Library SDK
 implementation("com.myunidays:package:0.0.1")
 ```
 
-### Android
-
-```
-implementation("com.myunidays:package-android:0.0.1")
-```
-
-### iOS
-
-Add to the binary to your swift package like this:
-
-```swift
-        .binaryTarget(
-            name: "project",
-            url: "https://github.com/MyUNiDAYS/template-kotlin-library/releases/download/0.0.1/0.0.1.zip",
-            checksum: "8c35293a410f4ec5d150c4f5464f6b5cf04a1a15d1ae9c29126bb0b7a7dc2a54"
-        ),
-```
-
-Where 0.0.1 is the release number, you will also need to change the checksum, xcode will tell you the different checksum if its wrong and just update that from the error message.
-
 ## How to use
 
 ### KMM
-
-### Android
-
-### iOS
 
 ## Contributing
 
