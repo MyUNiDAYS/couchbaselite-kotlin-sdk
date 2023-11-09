@@ -1,6 +1,10 @@
 package com.myunidays.couchbaselite
 
-actual class MutableDocument internal constructor(override val ios: cocoapods.CouchbaseLite.CBLMutableDocument) : Document(ios) {
+import kotlinx.cinterop.ExperimentalForeignApi
+
+@OptIn(ExperimentalForeignApi::class)
+actual class MutableDocument internal constructor(override val ios: cocoapods.CouchbaseLite.CBLMutableDocument) :
+    Document(ios) {
     actual fun setJSON(json: String) {
         ios.setJSON(json, null)
     }

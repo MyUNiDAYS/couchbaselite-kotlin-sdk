@@ -2,7 +2,9 @@ package com.myunidays.couchbaselite
 
 import cocoapods.CouchbaseLite.CBLCollection
 import cocoapods.CouchbaseLite.CBLScope
+import kotlinx.cinterop.ExperimentalForeignApi
 
+@OptIn(ExperimentalForeignApi::class)
 actual class Database actual constructor(name: String, configuration: DatabaseConfiguration) {
     lateinit var ios: cocoapods.CouchbaseLite.CBLDatabase
     actual val name: String get() = ios.name

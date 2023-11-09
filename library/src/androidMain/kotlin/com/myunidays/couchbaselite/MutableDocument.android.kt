@@ -1,6 +1,7 @@
 package com.myunidays.couchbaselite
 
-actual class MutableDocument internal constructor(override val android: com.couchbase.lite.MutableDocument) : Document(android) {
+actual class MutableDocument internal constructor(override val android: com.couchbase.lite.MutableDocument) :
+    Document(android) {
     actual fun setJSON(json: String) {
         android.setJSON(json)
     }

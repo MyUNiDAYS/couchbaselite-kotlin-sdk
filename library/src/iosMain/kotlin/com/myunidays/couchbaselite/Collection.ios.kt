@@ -1,9 +1,11 @@
 package com.myunidays.couchbaselite
 
+import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
 
+@OptIn(ExperimentalForeignApi::class)
 actual class Collection internal constructor(val ios: cocoapods.CouchbaseLite.CBLCollection) {
     actual val name: String get() = ios.name
     actual val count: Long get() = ios.count.toLong()

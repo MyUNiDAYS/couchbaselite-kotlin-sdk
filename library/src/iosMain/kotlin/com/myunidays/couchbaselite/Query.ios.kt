@@ -1,5 +1,8 @@
 package com.myunidays.couchbaselite
 
+import kotlinx.cinterop.ExperimentalForeignApi
+
+@OptIn(ExperimentalForeignApi::class)
 actual class Query internal constructor(private val ios: cocoapods.CouchbaseLite.CBLQuery) {
     actual val parameters: Parameters?
         get() = ios.parameters

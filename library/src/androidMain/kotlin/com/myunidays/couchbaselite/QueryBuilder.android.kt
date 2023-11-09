@@ -10,6 +10,7 @@ actual object QueryBuilder {
             .selectDistinct(selectResult.android)
             .from(dataSource.android)
     )
+    @Suppress("SpreadOperator")
     actual fun select(
         vararg selectResults: SelectResult,
         dataSource: DataSource,
@@ -24,6 +25,7 @@ actual object QueryBuilder {
         return Query(query)
     }
 
+    @Suppress("SpreadOperator")
     actual fun select(
         vararg selectResults: SelectResult,
         dataSource: DataSource
